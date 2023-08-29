@@ -1,0 +1,65 @@
+// DSCH 2.7f
+// 04/09/2022 02:55:30
+// D:\Studies\Ashfia Khanam\CSE460\Lab\Lab3\NegDFF_18301231.sch
+
+module NegDFF_18301231( CLK,D,Q,invQ);
+ input CLK,D;
+ output Q,invQ;
+ wire w8,w9,w10,w11,w12,w13,w14,w15;
+ wire w16,w17,w18,w19,w20,w21;
+ nand #(198) sub_1(w3,w8,w4);
+ nand #(160) sub_2(w10,CLK,w9);
+ nand #(160) sub_3(w8,D,CLK);
+ nand #(163) sub_4(w4,w3,w10);
+ pmos #(101) sub_5(w3,vdd,w8); //  
+ pmos #(101) sub_6(w3,vdd,w4); //  
+ nmos #(101) sub_7(w3,w11,w8); //  
+ nmos #(13) sub_8(w11,vss,w4); //  
+ pmos #(62) sub_9(w10,vdd,CLK); //  
+ pmos #(62) sub_10(w10,vdd,w9); //  
+ nmos #(62) sub_11(w10,w12,CLK); //  
+ nmos #(13) sub_12(w12,vss,w9); //  
+ pmos #(43) sub_13(w9,vdd,D); //  
+ nmos #(43) sub_14(w9,vss,D); //  
+ pmos #(62) sub_15(w8,vdd,D); //  
+ pmos #(62) sub_16(w8,vdd,CLK); //  
+ nmos #(62) sub_17(w8,w13,D); //  
+ nmos #(13) sub_18(w13,vss,CLK); //  
+ pmos #(66) sub_19(w4,vdd,w3); //  
+ pmos #(66) sub_20(w4,vdd,w10); //  
+ nmos #(66) sub_21(w4,w14,w3); //  
+ nmos #(13) sub_22(w14,vss,w10); //  
+ nand #(170) sub_23(Q,w15,invQ);
+ nand #(160) sub_24(w17,w5,w16);
+ nand #(160) sub_25(w15,w3,w5);
+ nand #(170) sub_26(invQ,Q,w17);
+ pmos #(73) sub_27(Q,vdd,w15); //  
+ pmos #(73) sub_28(Q,vdd,invQ); //  
+ nmos #(73) sub_29(Q,w18,w15); //  
+ nmos #(13) sub_30(w18,vss,invQ); //  
+ pmos #(62) sub_31(w17,vdd,w5); //  
+ pmos #(62) sub_32(w17,vdd,w16); //  
+ nmos #(62) sub_33(w17,w19,w5); //  
+ nmos #(13) sub_34(w19,vss,w16); //  
+ pmos #(43) sub_35(w16,vdd,w3); //  
+ nmos #(43) sub_36(w16,vss,w3); //  
+ pmos #(62) sub_37(w15,vdd,w3); //  
+ pmos #(62) sub_38(w15,vdd,w5); //  
+ nmos #(62) sub_39(w15,w20,w3); //  
+ nmos #(13) sub_40(w20,vss,w5); //  
+ pmos #(73) sub_41(invQ,vdd,Q); //  
+ pmos #(73) sub_42(invQ,vdd,w17); //  
+ nmos #(73) sub_43(invQ,w21,Q); //  
+ nmos #(13) sub_44(w21,vss,w17); //  
+ pmos #(58) sub_45(w5,vdd,CLK); //  
+ nmos #(58) sub_46(w5,vss,CLK); //  
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 CLK=~CLK;
+#2000 D=~D;
+
+// Simulation parameters
+// CLK CLK 10 10
+// D CLK 20 20

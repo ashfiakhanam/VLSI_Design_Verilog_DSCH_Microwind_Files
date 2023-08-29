@@ -1,0 +1,40 @@
+// DSCH 2.7f
+// 8/24/2022 12:46:39 AM
+// D:\Studies\Ashfia Khanam\CSE460\Lab\Lab3\DLatch_18301231.sch
+
+module DLatch_18301231( CLK,D,Q,invQ);
+ input CLK,D;
+ output Q,invQ;
+ wire w8,w9,w10,w11;
+ nand #(242) nand_01(Q,w1,invQ);
+ nand #(235) nand_01(w6,CLK,w5);
+ nand #(235) nand_01(w1,D,CLK);
+ nand #(242) nand_01(invQ,Q,w6);
+ pmos #(47) sub_1(Q,vdd,w1); //  
+ pmos #(47) sub_2(Q,vdd,invQ); //  
+ nmos #(47) sub_3(Q,w8,w1); //  
+ nmos #(12) sub_4(w8,vss,invQ); //  
+ pmos #(40) sub_5(w6,vdd,CLK); //  
+ pmos #(40) sub_6(w6,vdd,w5); //  
+ nmos #(40) sub_7(w6,w9,CLK); //  
+ nmos #(12) sub_8(w9,vss,w5); //  
+ pmos #(30) sub_9(w5,vdd,D); //  
+ nmos #(30) sub_10(w5,vss,D); //  
+ pmos #(40) sub_11(w1,vdd,D); //  
+ pmos #(40) sub_12(w1,vdd,CLK); //  
+ nmos #(40) sub_13(w1,w10,D); //  
+ nmos #(12) sub_14(w10,vss,CLK); //  
+ pmos #(47) sub_15(invQ,vdd,Q); //  
+ pmos #(47) sub_16(invQ,vdd,w6); //  
+ nmos #(47) sub_17(invQ,w11,Q); //  
+ nmos #(12) sub_18(w11,vss,w6); //  
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 CLK=~CLK;
+#2000 D=~D;
+
+// Simulation parameters
+// CLK CLK 10 10
+// D CLK 20 20
